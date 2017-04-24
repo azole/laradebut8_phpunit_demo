@@ -22,4 +22,21 @@ class ArrayUntilTest extends TestCase
         /** Assert */
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * @test
+     */
+    public function testArrayUntilKeyDoesNotExistThrowException()
+    {
+        /** Arrange */
+        $names = ['Mark', 'Duncan', 'Erica', 'Fish'];
+
+        /** Assume */
+        $this->expectException(\InvalidArgumentException::class);
+
+        /** Act */
+        $actual = array_until($names, 'NotExist');
+
+        /** Assert */
+    }
 }
