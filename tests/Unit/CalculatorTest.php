@@ -74,4 +74,23 @@ class CalculatorTest extends TestCase
 
         /** Assert */
     }
+
+    /**
+     * @test
+     */
+    public function testAcceptsMultipleArgs()
+    {
+        /** Arrange */
+        $target = new Calculator;
+
+        /** Assume */
+        $expected = 10;
+
+        /** Act */
+        $target->add(1, 2, 3, 4);
+        $actual = $target->getResult();
+
+        /** Assert */
+        $this->assertEquals($expected, $actual);
+    }
 }
