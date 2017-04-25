@@ -6,6 +6,7 @@ use App\Calculator;
 use App\Multiple;
 use App\Subtract;
 use Tests\TestCase;
+use Mockery as m;
 
 class CalculatorTest extends TestCase
 {
@@ -16,6 +17,11 @@ class CalculatorTest extends TestCase
     protected function setUp()
     {
         $this->calc = new Calculator;
+    }
+
+    protected function tearDown()
+    {
+        m::close();
     }
 
     /**
@@ -56,7 +62,12 @@ class CalculatorTest extends TestCase
     {
         /** Arrange */
         $this->calc->setOperands(5);
-        $this->calc->setOperation(new Addition());
+        $mock = m::mock(Addition::class);
+        $mock->shouldReceive('run')
+             ->once()
+             ->with(5, 0)
+             ->andReturn(5);
+        $this->calc->setOperation($mock);
 
         /** Assume */
         $expected = 5;
