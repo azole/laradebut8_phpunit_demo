@@ -57,4 +57,21 @@ class CalculatorTest extends TestCase
         /** Assert */
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * @test
+     */
+    public function testRequiresNumricValue()
+    {
+        /** Arrange */
+        $target = new Calculator;
+
+        /** Assume */
+        $this->expectException(\InvalidArgumentException::class);
+
+        /** Act */
+        $target->add('five');
+
+        /** Assert */
+    }
 }
