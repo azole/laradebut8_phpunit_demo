@@ -13,21 +13,29 @@ class Calculator
 
     public function add()
     {
-        foreach (func_get_args() as $num) {
-            if (!is_numeric($num)) {
-                throw new \InvalidArgumentException('Invalid Argument!!');
-            }
-            $this->result += $num;
-        }
+        $this->calculateAll(func_get_args(), '+');
     }
 
     public function subtract()
     {
-        foreach (func_get_args() as $num) {
+        $this->calculateAll(func_get_args(), '-');
+    }
+
+    protected function calculateAll(array $numbers, $symbol): void
+    {
+        foreach ($numbers as $num) {
             if (!is_numeric($num)) {
                 throw new \InvalidArgumentException('Invalid Argument!!');
             }
-            $this->result -= $num;
+            switch ($symbol)
+            {
+                case '+':
+                    $this->result += $num;
+                    break;
+                case '-':
+                    $this->result -= $num;
+                    break;
+            }
         }
     }
 }
