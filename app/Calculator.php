@@ -13,6 +13,9 @@ class Calculator
 
     public function add($num)
     {
+        if (!is_numeric($num)) {
+            throw new \InvalidArgumentException('Invalid Argument!!');
+        }
         $this->result += $num;
     }
 }
