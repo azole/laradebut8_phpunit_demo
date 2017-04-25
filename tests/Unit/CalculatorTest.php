@@ -3,6 +3,7 @@ namespace Test\Unit;
 
 use App\Addition;
 use App\Calculator;
+use App\Multiple;
 use App\Subtract;
 use Tests\TestCase;
 
@@ -122,4 +123,24 @@ class CalculatorTest extends TestCase
         /** Assert */
         $this->assertEquals($expected, $actual);
     }
+
+    /**
+     * @test
+     */
+    public function testMultipliesNumbers()
+    {
+        /** Arrange */
+        $this->calc->setOperands(3, 3, 3);
+        $this->calc->setOperation(new Multiple());
+
+        /** Assume */
+        $expected = 27;
+
+        /** Act */
+        $actual = $this->calc->calculate();
+
+        /** Assert */
+        $this->assertSame($expected, $actual);
+    }
+
 }
