@@ -20,4 +20,14 @@ class Calculator
             $this->result += $num;
         }
     }
+
+    public function subtract()
+    {
+        foreach (func_get_args() as $num) {
+            if (!is_numeric($num)) {
+                throw new \InvalidArgumentException('Invalid Argument!!');
+            }
+            $this->result -= $num;
+        }
+    }
 }
