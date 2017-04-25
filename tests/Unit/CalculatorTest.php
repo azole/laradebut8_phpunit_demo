@@ -1,11 +1,15 @@
 <?php
 namespace Test\Unit;
 
+use App\Addition;
 use App\Calculator;
 use Tests\TestCase;
 
 class CalculatorTest extends TestCase
 {
+    /**
+     * @var Calculator
+     */
     protected $calc;
     protected function setUp()
     {
@@ -49,13 +53,14 @@ class CalculatorTest extends TestCase
     public function testAddNumbers()
     {
         /** Arrange */
+        $this->calc->setOperands(5);
+        $this->calc->setOperation(new Addition());
 
         /** Assume */
         $expected = 5;
 
         /** Act */
-        $this->calc->add(5);
-        $actual = $this->calc->getResult();
+        $actual = $this->calc->calculate();
 
         /** Assert */
         $this->assertEquals($expected, $actual);
