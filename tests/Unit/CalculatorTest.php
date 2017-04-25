@@ -38,4 +38,23 @@ class CalculatorTest extends TestCase
         /** Assert */
         $this->assertSame($expected, $actual);
     }
+
+    /**
+     * @test
+     */
+    public function testAddNumbers()
+    {
+        /** Arrange */
+        $target = new Calculator;
+
+        /** Assume */
+        $expected = 5;
+
+        /** Act */
+        $target->add(5);
+        $actual = $target->getResult();
+
+        /** Assert */
+        $this->assertEquals($expected, $actual);
+    }
 }
