@@ -1,6 +1,7 @@
 <?php
 namespace Test\Unit;
 
+use App\Calculator;
 use Tests\TestCase;
 
 class CalculatorTest extends TestCase
