@@ -20,4 +20,22 @@ class CalculatorTest extends TestCase
 
         /** Assert */
     }
+
+    /**
+     * @test
+     */
+    public function testShouldResultDefaultToZero()
+    {
+        /** Arrange */
+        $target = new Calculator;
+
+        /** Assume */
+        $expected = 0;
+
+        /** Act */
+        $actual = $target->getResult();
+
+        /** Assert */
+        $this->assertSame($expected, $actual);
+    }
 }
